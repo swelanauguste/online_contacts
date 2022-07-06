@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %}
+Contacts
+{% endblock head_title %}
+
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center display-4 mt-3">Contacts</h1>
+    <form action="{% url 'contacts:contact-list' %}"
+        method="get">
+        <input class="form-control form-control-lg rounded-pill my-5 border-dark border-2"
+            type="search"
+            name="q">
+    </form>
+    <div class="d-flex justify-content-center">
+        <div class="col-lg-3">
+            <ul class="list-group">
+                {% for object in object_list %}
+                <li title="{{object.role}}" class="btn btn-outline-dark mb-2 shadow rounded-pill">
+                    {{object}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
